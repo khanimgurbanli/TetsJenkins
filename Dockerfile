@@ -1,4 +1,5 @@
-FROM openjdk:21
-COPY target/perspektiv-0.0.1-SNAPSHOT.jar app.jar
+FROM openjdk
 EXPOSE 8084
-ENTRYPOINT ["java","-jar", "app.jar"]
+ARG JAR_FILE=target/perspektiv-0.0.1-SNAPSHOT.jar
+ADD ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar", "/app.jar"]
