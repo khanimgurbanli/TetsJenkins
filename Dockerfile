@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk16
+FROM adoptopenjdk/openjdk16:latest
 EXPOSE 8084
 ARG JAR_FILE=target/*.jar
 ADD ${JAR_FILE} app.jar
