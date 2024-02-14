@@ -1,10 +1,9 @@
-FROM openjdk:21-jre-slim as builder
+FROM adoptopenjdk/openjdk11:jre-11.0.13_8-alpine as builder
 ARG JAR_FILE=target/perspektiv-0.0.1-SNAPSHOT.jar
 COPY ${JAR_FILE} /app.jar
 
-FROM adoptopenjdk/openjdk16:jre-16.0.2_7-alpine
-ARG JAR_FILE=target/perspektiv-0.0.1-SNAPSHOT.jar
-COPY ${JAR_FILE} /app.jar
+
+FROM adoptopenjdk/openjdk11:jre-11.0.13_8-alpine
 EXPOSE 8083
+COPY --from=builder /app.jar /app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
-
