@@ -1,4 +1,4 @@
-FROM openjdk
+FROM adoptopenjdk/openjdk:alpine-jre
 
 ARG JAR_FILE=target/perspektiv-0.0.1-SNAPSHOT.jar
 
