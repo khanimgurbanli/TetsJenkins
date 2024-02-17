@@ -7,11 +7,12 @@ pipeline {
                 sh 'docker build -t uiproject_image .'
             }
         }
-        stage('Run Docker Compose') {
-            steps {
-                sh 'docker-compose up -d --build'
+        stage('Start container') {
+              steps {
+                sh 'docker compose up -d --no-color --wait'
+                sh 'docker compose ps'
+              }
             }
-
         }
     }
 }
