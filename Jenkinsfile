@@ -4,17 +4,13 @@ pipeline {
     stages {
         stage('Build Docker Image') {
             steps {
-                script {
-                    sh 'docker build -t uiproject_image .'
-                }
+                sh 'docker build -t uiproject_image .'
             }
         }
         stage('Start container') {
             steps {
-                script {
-                    sh 'docker-compose up -d --no-color --remove-orphans'
-                    sh 'docker-compose ps'
-                }
+                sh 'docker-compose up -d --no-color --wait'
+                sh 'docker-compose ps'
             }
         }
     }
