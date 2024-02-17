@@ -2,7 +2,12 @@ pipeline {
     agent any
 
     stages {
-        stage("verify tooling") {
+        stage("Install jq") {
+            steps {
+                sh 'apt update && sudo apt install -y jq'
+            }
+        }
+        stage("Verify tooling") {
             steps {
                 sh '''
                     docker version

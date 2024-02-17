@@ -5,10 +5,10 @@ services:
     ports:
       - "83:8080"
     networks:
-      - my-network
+      - bridge
 
 networks:
-  my-network:
+  bridge:
 
 
 
