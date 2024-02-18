@@ -11,6 +11,6 @@ public class HelloController {
 
     @GetMapping({"/"})
     public String print() {
-        return "hello khanim gurbanli";
+        return "Hi, Khanim gurbanli";
     }
 }
