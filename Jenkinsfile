@@ -20,13 +20,9 @@ pipeline {
         }
         stage('Prune Docker data') {
             steps {
-                sh 'docker system prune -a --volumes -f'
-            }
-        }
-        stage('Start container') {
-            steps {
-                sh 'docker-compose up -d --no-color --wait'
-                sh 'docker-compose ps'
+                sh 'docker rm -f uiproject_container || true'  // Eğer uiproject_container mevcutsa önce onu sil
+                sh 'docker build -t uiproject_image .'         // Docker imajını oluştur
+                sh 'docker run -d -p 86:8080 --name uiproject_container uiproject_image'  // Docker konteynerini başlat
             }
         }
     }

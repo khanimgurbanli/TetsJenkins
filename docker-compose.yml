@@ -1,14 +1,4 @@
-version: '3.8'
-services:
-  app:
-    image: uiproject_image
-    ports:
-      - "83:8080"
-    networks:
-      - bridge
 
-networks:
-  bridge:
 
 
 
