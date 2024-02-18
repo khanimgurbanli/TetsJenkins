@@ -18,6 +18,11 @@ pipeline {
                 sh 'docker rm -f ui_project_container || true'
             }
         }
+        stage('Remove Old Image') {
+            steps {
+                sh 'docker rmi ui_images || true'
+             }
+          }
         stage('Build Image') {
             steps {
                 // Create Docker image
