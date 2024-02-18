@@ -27,7 +27,7 @@ pipeline {
         stage('Run Container') {
             steps {
                 // Start Docker container with volume
-                sh 'docker run -dit --name uiproject_container -p 4:8080 -v uiproject_volume://volumestorage/uistorage ui_image'
+                sh 'docker run -dit --name uiproject_container -p 4:8080 -v uiproject_volume:/opt/volumestorage/ui_storage'
             }
         }
     }
