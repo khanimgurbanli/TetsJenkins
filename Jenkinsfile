@@ -15,19 +15,19 @@ pipeline {
         stage('Remove Container') {
             steps {
                 // Stop and Remove Old container
-                sh 'docker rm -f uiproject_container || true'
+                sh 'docker rm -f ui_project_container || true'
             }
         }
         stage('Build Image') {
             steps {
                 // Create Docker image
-                sh 'docker build -t ui_image .'
+                sh 'docker build -t ui_images .'
             }
         }
         stage('Run Container') {
             steps {
                 // Start Docker container with volume
-                sh 'docker run -dit --name uiproject_container -p 4:8080 -v uiproject_volume:/opt/volumestorage/ui_storage ui_image'
+                sh 'docker run -dit --name ui_project_container -p 4:8080 -v ui_project_volume:/opt/volumestorage/ui_storage ui_images'
             }
         }
     }
