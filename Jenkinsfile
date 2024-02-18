@@ -20,19 +20,19 @@ pipeline {
         }
         stage('Remove Old Image') {
             steps {
-                sh 'docker rmi ui_images || true'
+                sh 'docker rmi ui_imageee || true'
              }
           }
         stage('Build Image') {
             steps {
                 // Create Docker image
-                sh 'docker build -t ui_images .'
+                sh 'docker build -t ui_imageee .'
             }
         }
         stage('Run Container') {
             steps {
                 // Start Docker container with volume
-                sh 'docker run -dit --name ui_project_container -p 4:8080 -v ui_project_volume:/opt/volumestorage/ui_storage ui_images'
+                sh 'docker run -dit --name ui_project_container -p 83:8080 -v ui_project_volume:/opt/volumestorage/ui_storage ui_imageee'
             }
         }
     }
